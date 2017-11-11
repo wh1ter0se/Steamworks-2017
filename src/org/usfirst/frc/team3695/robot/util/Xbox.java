@@ -2,6 +2,11 @@ package org.usfirst.frc.team3695.robot.util;
 
 import edu.wpi.first.wpilibj.Joystick;
 
+
+/**
+ * final-variable bank for controller values
+ * also has axis modifiers
+ */
 public class Xbox {
 	
 	public static final double DEADZONE = 0.25;
