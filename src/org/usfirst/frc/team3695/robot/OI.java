@@ -13,6 +13,7 @@ import org.usfirst.frc.team3695.robot.enumeration.Autonomous;
 import org.usfirst.frc.team3695.robot.enumeration.Camera;
 import org.usfirst.frc.team3695.robot.enumeration.Direction;
 import org.usfirst.frc.team3695.robot.util.Xbox;
+import org.usfirst.frc.team3695.robot.util.JoystickController;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -27,14 +28,17 @@ public class OI {
 	
 	public static final Joystick DRIVER = new Joystick(0);
 	public static final Joystick OPERATOR = new Joystick(1);
+	public static final Joystick JOY_OPERATOR = new Joystick(2);
 	public OI(){
 		
 		/**
 		 * Ball Loading
 		 */
+		// is this actually winch?
 		Button ball = new JoystickButton(OPERATOR, Xbox.X);
 		ball.toggleWhenActive(new ButtonCommandBallHopper());
-		
+		Button joyball = new JoystickButton(JOY_OPERATOR, JoystickController.WINCH); 
+		joyball.toggleWhenActive(new ButtonCommandBallHopper());
 		/**
 		 * Switching the camera
 		 */
@@ -54,6 +58,8 @@ public class OI {
 		 */
 		Button gear = new JoystickButton(OPERATOR, Xbox.RB);
 		gear.toggleWhenActive(new ButtonCommandFlaps());
+		Button joygear = new JoystickButton(JOY_OPERATOR, JoystickController.FLAPPY);
+		joygear.toggleWhenActive(new ButtonCommandFlaps());
 		
 		/**
 		 * To Compress, or Not To Compress. It is now an option.
